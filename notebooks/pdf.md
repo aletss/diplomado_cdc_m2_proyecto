@@ -17,6 +17,24 @@ El porcentaje promedio estimado en las 3 etapas del vuelo son las siguientes
 * Taxi in: 6.6%
 
 
+## Problemas técnicos
+Cancelaciones menores al 5%
+Redirección de vuelo a otros aereopuertos menos del 1%
+Cada ruta (combinación Aereopuerto Origen y Aereopuerto Destino) representanta menos del 0.5% de los viajes
+
+
+## Retrasos de salida y llegada
+El escenario promedio de salida tiene un retraso de 18 minutos, con una desviación estándar de 22 minutos
+
+El escenario promedio de llegada tiene una llegada temprana de 1 minuto, con una desviación de 26 minutos 
+
+## Recuperación de tiempo 
+Cuando el tiempo de vuelo real es menor que el tiempo estimado (minutos entre hora asignada de salida y hora asignada de llegada) es independiente del retraso que puede tener un vuelo, ya que podría iniciar tarde y tardar menos del estimado, terminando el vuelo con retraso, pero mejor al inicial.
+Vuelos con tiempo real menor al esperado es del 22.4%
+
+## Aerolíneas 
+A pesar de que existen 10 aerolíneas que venden tickets de vuelo, son 21 aerolíneas las que operan.
+
 ## Eventos relevantes 
 Los porcentajes de eventos de interés son:
 
@@ -32,12 +50,78 @@ Los porcentajes de eventos de interés son:
 | Problemas operacionales (cancelaciones y desviaciones de aterrizajes) | 3.3% |
 
 
-
 # Métricas del Modelo (Debe existir una comparativa entre los modelos)
 
+Con las variables construidas se probaron los modelos RandomForestClassifier, DecisionTreeClasifier, AdaBoostClassifier, LogisticRegression, KNeighborsClassifier estás fueron las métricas obtenidas:
+
+      
+      model
+      best_params
+      classification_report
+      roc_auc
+    
+      0
+      RandomForestClassifier
+      {'n_estimators': 100, 'min_samples_split': 5, ...
+      {'0': {'precision': 0.8641083521444696, 'recal...
+      0.622443
+    
+    
+      1
+      DecisionTreeClassifier
+      {'min_samples_split': 10, 'min_samples_leaf': ...
+      {'0': {'precision': 0.8127570789865872, 'recal...
+      0.618876
+    
+    
+      2
+      AdaBoostClassifier
+      {'n_estimators': 50, 'learning_rate': 0.5}
+      {'0': {'precision': 0.8126638074815344, 'recal...
+      0.618627
+    
+    
+      3
+      LogisticRegression
+      {'solver': 'lbfgs', 'penalty': 'l2', 'class_we...
+      {'0': {'precision': 0.8601522002867542, 'recal...
+      0.614568
+    
+    
+      4
+      KNeighborsClassifier
+      {'weights': 'uniform', 'n_neighbors': 7, 'metr...
+      {'0': {'precision': 0.8163967231567757, 'recal...
+      0.565083
+
+
 # Criterios de selección del mejor modelo bien justificada; con sus respectivos hiperparametros (tuneados).
+A pesar de que el mejor modelo es un RandomForestClassifier, por simplicidade de interpretación y mejor calibración de probabilidad LogisticRegression es un modelo más atractivo para una mejor aceptación en aviación, ya que es un sector que cuida mucho la seguridad de sus pasajeros y por ende un sector más conservador en todo sentido.
+
+Los hiperparametros usados fueron:
+
+
+El resultado de las betas del modelo son las siguientes:
+
+
+Con la interpretación:
+
+
 
 # Reporte de estabilidad de los modelos (Considerar un periodo/conjunto OOT, donde se vean los criterios de PSI, CSI,) [Clasificación] (KS entre la distribución de 1s y 0s, TE/TNE)
+
+
+Para conocer la estabilidad de un mes siguiente, se consideran PSI, CSI, KS entre distribuciones de las probabilidades de valores en variable objetivo.
+
+PSI
+
+CSI
+
+KS
+
+Calibración (percentil vs probabilidad)
+
+
 
 # Caso de uso del modelo (Cómo se implementaría, desde el enfoque del usuario final) [Criterio de selección del punto de corte o partición de la distribución de probabilidades para las estrategias]
 
