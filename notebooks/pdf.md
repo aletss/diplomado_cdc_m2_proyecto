@@ -55,44 +55,13 @@ Los porcentajes de eventos de interés son:
 Con las variables construidas se probaron los modelos RandomForestClassifier, DecisionTreeClasifier, AdaBoostClassifier, LogisticRegression, KNeighborsClassifier estás fueron las métricas obtenidas:
 
       
-      model
-      best_params
-      classification_report
-      roc_auc
-    
-      0
-      RandomForestClassifier
-      {'n_estimators': 100, 'min_samples_split': 5, ...
-      {'0': {'precision': 0.8641083521444696, 'recal...
-      0.622443
-    
-    
-      1
-      DecisionTreeClassifier
-      {'min_samples_split': 10, 'min_samples_leaf': ...
-      {'0': {'precision': 0.8127570789865872, 'recal...
-      0.618876
-    
-    
-      2
-      AdaBoostClassifier
-      {'n_estimators': 50, 'learning_rate': 0.5}
-      {'0': {'precision': 0.8126638074815344, 'recal...
-      0.618627
-    
-    
-      3
-      LogisticRegression
-      {'solver': 'lbfgs', 'penalty': 'l2', 'class_we...
-      {'0': {'precision': 0.8601522002867542, 'recal...
-      0.614568
-    
-    
-      4
-      KNeighborsClassifier
-      {'weights': 'uniform', 'n_neighbors': 7, 'metr...
-      {'0': {'precision': 0.8163967231567757, 'recal...
-      0.565083
+| model | roc_auc |
+|---|---|
+| RandomForestClassifier | 0.622443 |
+| DecisionTreeClassifier | 0.618876 |
+| AdaBoostClassifier | 0.618627 |
+| LogisticRegression | 0.614568 |
+| KNeighborsClassifier | 0.565083 |
 
 
 # Criterios de selección del mejor modelo bien justificada; con sus respectivos hiperparametros (tuneados).
